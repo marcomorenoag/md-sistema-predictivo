@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de predicción 1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!--BARRA DE NAVEGACIÓN-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3">
+    <a class="navbar-brand text-white font-weight-bold" href="#"><i class="fas fa-home"></i>&nbsp;Minería de Datos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <!---->
+
+  <div class="content text-center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-6">Sistema de inferencia basado en un modelo de predicción de tipo de cáncer</h1> <br>
+        <p class="lead">Este sistema de inferencias se basa en un modelo realizado con regresión logística y empleando <span style="font-weight: bold">todas las variables</span>.</p><br>
+        <form>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="id">ID</label>
+                <input type="number" class="form-control" id="id" placeholder="Ingrese el id">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="radius">Radio</label>
+                <input type="number" class="form-control" id="radius" placeholder="Ingrese el radio">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="compactness">Compacidad</label>
+                <input type="number" class="form-control" id="compactness" placeholder="Ingrese la compacidad">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="texture">Textura</label>
+                <input type="number" class="form-control" id="texture" placeholder="Ingrese la textura">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="concavity">Concavidad</label>
+                <input type="number" class="form-control" id="concavity" placeholder="Ingrese la concavidad">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="perimeter">Perímetro</label>
+                <input type="number" class="form-control" id="perimeter" placeholder="Ingrese el perímetro">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="concave_points">Puntos concavos</label>
+                <input type="number" class="form-control" id="concave_points" placeholder="Ingrese los puntos concavos">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="area">Área</label>
+                <input type="number" class="form-control" id="area" placeholder="Ingrese el área">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="symmetry">Simetría</label>
+                <input type="number" class="form-control" id="symmetry" placeholder="Ingrese la simetría">
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="smoothness">Suavidad</label>
+                <input type="number" class="form-control" id="smoothness" placeholder="Ingrese la suavidad">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="fractal_dimension">Dimensión fractal</label>
+                <input type="number" class="form-control" id="fractal_dimension"
+                  placeholder="Ingrese la dimensión fractal">
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="btnResult();">Analizar</button>
+        </form>
+
+        <div class="result">
+          <div class="row justify-content-around">
+            <div class="col-md-11" id="diagnosis">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUENTE Y ZOOM ELEGIDA PARA TODO EL SISTEMA -->
+  <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+  <style type="text/css">
+    body {
+      font-family: 'Questrial', sans-serif;
+      zoom: 95%;
+    }
+  </style>
+  <!--FOOTER-->
+  <footer class="page-footer font-small text-white text-center">
+    <div class="container">
+      <div class="row justify-content-around align-items-center">
+        <div class="col-lg-5">
+          <p style="font-weight:bold; font-size:1.2rem;">Universidad Nacional Autónoma de México</p>
+          <p style="font-weight:bold; font-size:1.5rem; margin-left:0px;">Facultad de Ingeniería</p>
+          <p style="margin-left:0px;">Copyrights &copy; 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id="extraInfo">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <p>Versión 1.0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FOOTER-->
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

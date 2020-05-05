@@ -1,0 +1,28 @@
+header, footer {
+  background-color: #363C42;
+  padding: 20px 0px;
+}
+
+#extraInfo {
+  background-color: rgb(49, 49, 49);
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+footer div p {
+  margin-bottom: 0px;
+  padding: 5px;
+}
+
+.content {
+  margin: 2em;
+}
+
+.jumbotron {
+  border-radius: 10px;
+}
+
+.result {
+  margin: 2em 0 0 0;
+}
